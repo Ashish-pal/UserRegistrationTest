@@ -1,54 +1,44 @@
 package userRegistration;
-
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class UserRegistrationMain {
-    Scanner sc = new Scanner(System.in);
+    private static final String First_Name_Pattern = "^[A-Z][a-zA-Z]{2,}$";
+    private static final String Email_Pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+    private static final String Mobile_Pattern = "^\\d{2} \\d{10}$";
+    private static final String Password_Pattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8}$";
 
     public boolean checkFirstName() {
-        System.out.print("Enter your first name: ");
-        String firstName = sc.nextLine();
-        if (firstName.matches("^[A-Z][a-zA-Z]{2,}$"))
-            System.out.println("Valid first name: " + firstName);
-        else
-            System.out.println("Invalid first name.");
-        return false;
+        Pattern pattern = Pattern.compile(First_Name_Pattern);
+        CharSequence fname = "Ashish";
+        if (pattern.matcher(fname).matches()) return true;
+        else return false;
     }
 
-    public void checkLastName() {
-        System.out.print("Enter your last name: ");
-        String lastName = sc.nextLine();
-        if (lastName.matches("^[A-Z][a-zA-Z]{2,}$"))
-            System.out.println("Valid last name: " + lastName);
-        else
-            System.out.println("Invalid last name.");
+    public boolean checkLastName() {
+        Pattern pattern = Pattern.compile(First_Name_Pattern);
+        CharSequence lname = "Pal";
+        if (pattern.matcher(lname).matches()) return true;
+        else return false;
+    }
+    public boolean checkEmail(){
+        Pattern pattern = Pattern.compile(Email_Pattern);
+        CharSequence email = "abc@gmail.com";
+        if (pattern.matcher(email).matches()) return true;
+        else return false;
     }
 
-    public void checkEmail() {
-        System.out.print("Enter your email: ");
-        String email = sc.nextLine();
-        if (email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"))
-            System.out.println("Valid email: " + email);
-        else
-            System.out.println("Invalid email.");
+    public boolean checkMobileNumber(){
+        Pattern pattern = Pattern.compile(Mobile_Pattern);
+        CharSequence mobile = "91 1234567890";
+        if (pattern.matcher(mobile).matches()) return true;
+        else return false;
     }
 
-    public void checkMobileNumber() {
-        System.out.print("Enter your mobile number: ");
-        String mobile = sc.nextLine();
-        if (mobile.matches("^\\d{2} \\d{10}$"))
-            System.out.println("Valid mobile: " + mobile);
-        else
-            System.out.println("Invalid mobile.");
-    }
-
-    public void checkPassword() {
-        System.out.print("Enter your password: ");
-        String password = sc.nextLine();
-        if (password.matches("^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8}$"))
-            System.out.println("Valid password: " + password);
-        else
-            System.out.println("Invalid password.");
+    public boolean checkPassword() {
+        Pattern pattern = Pattern.compile(Password_Pattern);
+        CharSequence passwrd = "12321323";
+        if (pattern.matcher(passwrd).matches()) return true;
+        else return false;
     }
 
     public static void main(String[] args) {
